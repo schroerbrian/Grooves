@@ -1,10 +1,9 @@
 
 <%#<%= params %>
-<%= @track[0].title %>
+
 <h1>
 <%= params["city"] %>
 </h1>
-
-<% client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e") %>
- <% @track = client.get('/users/39508079/tracks') %>
+<%= @track[0].title %>
+<p><%= params["username"] %></p>
 

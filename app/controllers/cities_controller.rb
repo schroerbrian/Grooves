@@ -9,7 +9,7 @@ class CitiesController < ApplicationController
 	
 
 	client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e")
-		@tracks = client.get('/tracks', :limit => 10)
+		@tracks = client.get('/tracks', :limit => 20)
 			@tracks.each do |track|
 				user_ids << track.user_id.to_s
 			end 
@@ -29,6 +29,7 @@ class CitiesController < ApplicationController
   def city
   	client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e") 
   	@track = client.get("/users/" + params["user"] + "/tracks" )
+
   end
 
   def track
