@@ -1,9 +1,11 @@
 
 <%#<%= params %>
+<%= params %>
 
 <h1>
 <%= params["city"] %>
 </h1>
 <%= @track[0].title %>
 <p><%= params["username"] %></p>
+<%= image_tag(@user.avatar_url) %>
 
