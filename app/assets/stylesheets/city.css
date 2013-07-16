@@ -1,0 +1,9 @@
+#map {
+	height: 200px;
+	margin: 50px;
+}
+
+.track {
+	border: solid blue;
+	width: 500px;
+}
