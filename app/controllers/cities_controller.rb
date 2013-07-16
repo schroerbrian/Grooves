@@ -5,26 +5,26 @@ class CitiesController < ApplicationController
   user_ids = []
 	@users = []
 	@cities = []
-
+	@good_users = []
+	@good_tracks = []
 	
 
 	client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e")
-		@tracks = client.get('/tracks', :limit => 20)
+		@tracks = client.get('/tracks', :limit => 3)
 			@tracks.each do |track|
-				user_ids << track.user_id.to_s
-			end 
-			user_ids.each do |user_id|
-				@users << client.get('/users/' + user_id)
+				@users << client.get('/users/' + track.user_id.to_s)
 			end
-			
-			# 	@users.each do |user|
-			# 		@cities << user.city
-			# 	end
-			# @cities.compact!
-			# tracks = temp_array.each.user_id.to_s
-			# user = client.get('/users/' + userid)
-			# city = user.city
-			# user.city
+		
+		@users.each do |user|
+			if (user.city) and (user.city.length) != 0 
+				@good_users	<< user
+			end
+		end
+  	
+  	@good_users.each do |good_user|
+  		@good_tracks << client.get('/users/' + good_user.id.to_s + '/tracks/')[0] 
+  	end 
+
   end
 
   def city

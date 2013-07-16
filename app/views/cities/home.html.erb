@@ -1,11 +1,20 @@
+<% @good_tracks.each do |good_track| %>
+	<%= good_track.user.username + " || " %>
+<% end %>
+<br><br>
+
+<% @good_users.each do |good_user| %>
+	<%= good_user.username + ", " + (good_user.city).titleize + " || " %>
+<% end %>
 
 
-<ul>
 
-<% @users.each do |user| %>
-	<% if (user.city) and (user.city.length != 0)  %>
- <li> <%= link_to user.city.titleize, "/city?user=#{user.id}&city=#{user.city}&username=#{user.username}" %> </li>
-  <% end%>
- <% end %>
 
-</ul>
+
+
+
+<%# @users.each do |user| %>
+	<%# if (user.city) and (user.city.length != 0)  %>
+ <%#<li> # link_to user.city.titleize, "/city?user=#{user.id}&city=#{user.city}&username=#{user.username}" %> 
+  <%# end%>
+ <%# end %>
