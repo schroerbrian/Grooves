@@ -40,6 +40,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    geocoder (1.1.8)
     hashie (2.0.5)
     hike (1.2.3)
     httmultiparty (0.3.10)
@@ -58,9 +59,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
+    mini_portile (0.5.1)
     multi_json (1.7.7)
     multi_xml (0.5.4)
     multipart-post (1.2.0)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -117,7 +121,11 @@ PLATFORMS
 
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
+  geocoder
+  httparty
   jquery-rails
+  json
+  nokogiri
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   soundcloud

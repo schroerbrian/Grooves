@@ -22,12 +22,12 @@ end
 
 gem 'jquery-rails'
 gem 'soundcloud'
-require 'json'
+gem 'json'
 require 'open-uri'
-require 'httparty'
-require 'soundcloud'
-require 'pp'
-require 'nokogiri'
+gem 'httparty'
+gem 'soundcloud'
+gem 'nokogiri'
+gem 'geocoder'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

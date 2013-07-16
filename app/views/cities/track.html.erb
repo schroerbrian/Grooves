@@ -1,1 +1,18 @@
-track page
+
+<% @geolocation = [] %>
+
+<% @city = Geocoder.search("west orange, nj") %>
+
+<% lat = @city.first.data["geometry"]["location"]["lat"] %>
+
+<% lng = @city.first.data["geometry"]["location"]["lng"] %>
+
+<% @geolocation <<  lat %> 
+
+<% @geolocation << lng %>
+
+<%= @geolocation %>
+
+
+
+

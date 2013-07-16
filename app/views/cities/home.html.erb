@@ -6,23 +6,26 @@
 
 </head>
 
+	<% first_username = @good_tracks[0].user.username %>
+	<% first_track = @good_tracks[0] %>
+	<% user_location = @good_users[0].city + ", " + @good_users[0].country %>
 
-<br><br>
-
-<% first_username = @good_tracks[0].user.username %>
-<% first_track = @good_tracks[0] %>
-<% user_location = @good_users[0] %>
+<% @geolocation = [] %>
+	<% @city = Geocoder.search(user_location) %>
+	<% lat = @city.first.data["geometry"]["location"]["lat"] %>
+	<% lng = @city.first.data["geometry"]["location"]["lng"] %>
+	<% @geolocation <<  lat %> 
+	<% @geolocation << lng %>
+<%= @geolocation %>
 
 <div class="track">
 
-			<strong>Creator: </strong> <%= first_username %> 
+			<strong> <%= first_username %> </strong> <%= user_location %>
 			<br>
-			<strong>Location: </strong>	<%= user_location.city %>,  <%= user_location.country %>
-			<br>
-			<strong>Track: </strong> <%= first_track.title %>
+			<em> <%= first_track.title %> </em> 
 
 			<div class="widget">
-				<iframe id="sc-widget" src="https://w.soundcloud.com/player/?auto_play=true&url=http://api.soundcloud.com/tracks/<%= first_track.id %>" width="90%" height="20%" scrolling="no" frameborder="no"></iframe>
+				<iframe id="sc-widget" src="https://w.soundcloud.com/player/?auto_play=true&url=http://api.soundcloud.com/tracks/<%= first_track.id %>" width="100%" height="20%" scrolling="no" frameborder="no"></iframe>
 				<script src="https://w.soundcloud.com/player/api.js" type="text/javascript"></script>
 				<script type="text/javascript">
 				  (function(){
@@ -50,10 +53,13 @@
 			</div>
 </div>
 
+
+
  <div id="map">
  	
  	<script>
-		var map = L.map('map').setView([51.505, -0.09], 			13);
+		var map = L.map('map').setView(<%= @geolocation %>, 5);
+		var marker = L.marker(<%= @geolocation %>).addTo(map);
 
 		L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/997/256/{z}/{x}/{y}.png', {
 		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
