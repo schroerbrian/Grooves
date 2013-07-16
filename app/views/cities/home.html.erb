@@ -3,7 +3,7 @@
 <ul>
 
 <% @users.each do |user| %>
-	<% if (user.city) and (user.city.length != 0)%>
+	<% if (user.city) and (user.city.length != 0)  %>
  <li> <%= link_to user.city.titleize, "/city?user=#{user.id}&city=#{user.city}&username=#{user.username}" %> </li>
   <% end%>
  <% end %>

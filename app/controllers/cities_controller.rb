@@ -16,6 +16,7 @@ class CitiesController < ApplicationController
 			user_ids.each do |user_id|
 				@users << client.get('/users/' + user_id)
 			end
+			
 			# 	@users.each do |user|
 			# 		@cities << user.city
 			# 	end

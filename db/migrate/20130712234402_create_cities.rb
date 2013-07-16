@@ -1,8 +1,9 @@
-class CreateCities < ActiveRecord::Migration
+class CreateCity < ActiveRecord::Migration
   def change
-    create_table :cities do |t|
+    create_table :city do |t|
     	t.string :name
     	t.text :image
+    	t.text :tracks 
       t.timestamps
     end
   end
