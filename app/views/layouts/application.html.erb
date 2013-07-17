@@ -9,19 +9,24 @@
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
   
   <script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+
+	<link rel="stylesheet" href="./soundcloud-custom-player/sc-player-standard.css" type="text/css">
+	<link rel="stylesheet" href="./soundcloud-custom-player/sc-player.css" type="text/css">
+
 	
-	<script type="text/javascript" src="scripts/soundcloud.player.api.js"></script>
-	
-	<script type="text/javascript">
-	  soundcloud.addEventListener('onPlayerReady', function(player, data) {
-	    player.api_play();
-	  });
-	</script>
+		</script>
 
 </head>
 <body>
 
 <%= yield %>
 
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript" src="./soundcloud-custom-player/js/soundcloud.player.api.js"></script>
+	<script type="text/javascript" src="./soundcloud-custom-player/js/sc-player.js"></script>
+
 </body>
+
 </html>
+
+	

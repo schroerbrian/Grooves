@@ -27,12 +27,7 @@
 					</ul>
 				</div>
 
-			<object height="81" width="100%" id="myPlayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
-		    <param name="movie" value="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&auto_play=true&enable_api=true&object_id=myPlayer"></param>
-		    <param name="allowscriptaccess" value="always"></param>
-		    <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2F<%= @name_url %>%2F<%= @track_url %>&enable_api=true&object_id=myPlayer" type="application/x-shockwave-flash" width="100%" name="myPlayer"></embed>
-		  </object>
-
+		<a href="http://soundcloud.com/<%= @name_url %>/<%= @track_url %>" class="sc-player">My new dub track</a>
 		</div> 
 	</div>
 <%# @users.each do |user| %>
