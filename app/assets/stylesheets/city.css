@@ -1,40 +1,60 @@
+
+
 body {
-	background-image: url('background.png');
+	background: white;
+	margin: 0;
+}
+
+header {
+	height: 60px;
+	box-shadow: inset 3px 9x #000000;
+	border-bottom: 1px solid #1c1f22; 
+}
+
+h1 {
+	font-family: "Helvetica", sans-serif;
+	font-size: 20px;
+	margin: 25px 0 20px 10px;
 }
 
 #map {
-	height: 500px;
-	width: 800px;
+	height: 430px;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 20px;
+	margin-top: 0px;
 	margin-bottom: 10px;
 }
 
+.footer {
+	height: 55px;
+}
+
 .track {
-	background-color: #f5f5f5;
-	border: solid blue;
 	width: 800px;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 5px;
+	margin-top: 0px;
 }
 
 .track .track_info {
 	padding: 0px;
-	margin: 1px;
+	margin: 0px;
 }
-.track ul {
+.track div ul {
 	margin-left: 0px;
+	padding: 0px;
+	font-family: "Helvetica", sans-serif;
 }
 
 .track li {
 	display: inline;
-	margin-left: 7px;
-	margin-right: 7px;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .track li:first-child{
 	margin-left: 0px;
 	padding-left: 0px;
+	margin-right: 0px;
 } 

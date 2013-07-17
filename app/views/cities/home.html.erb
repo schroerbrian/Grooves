@@ -17,37 +17,42 @@
 </head>
 <body>
 
- <div id="map">
- 	
- 	<script>
-		var map = L.map('map').setView(<%= @geolocation %>, 3);
-		L.marker(<%= @geolocation %>).addTo(map).bindPopup("<strong> <%= @first_username %> </strong>").openPopup();
+	 <header>
+	 	<h1>Global Grooves: Locally Sourced Beats</h1>	
 
-		L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/997/256/{z}/{x}/{y}.png', {
-		    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-		    maxZoom: 18
-		}).addTo(map);
+	 </header>
+	 <div id="map">
+	 	
+	 	<script>
+			var map = L.map('map').setView(<%= @geolocation %>, 2);
+			L.marker(<%= @geolocation %>).addTo(map).bindPopup("<strong> <%= @first_username %> </strong>").openPopup();
 
- 	</script>
+			L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/997/256/{z}/{x}/{y}.png', {
+			    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+			    maxZoom: 18
+			}).addTo(map);
 
- </div>
+	 	</script>
 
-<div class="track">
+	 </div>
 
-		<div class="track_info">	 
-			<ul>		
-				<li><strong> <%= @first_username %> </strong> </li> -- <li> <em> <%= @first_track.title %> </em> </li> -- <li> <%= @user_location %> </li>
-			</ul>
-		</div>
+	 <div class="footer">
+		<div class="track">
 
-	<object height="81" width="100%" id="myPlayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
-    <param name="movie" value="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&auto_play=true&enable_api=true&object_id=myPlayer"></param>
-    <param name="allowscriptaccess" value="always"></param>
-    <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2F<%= @name_url %>%2F<%= @track_url %>&enable_api=true&object_id=myPlayer" type="application/x-shockwave-flash" width="100%" name="myPlayer"></embed>
-  </object>
+				<div class="track_info">	 
+					<ul>		
+						<li><strong> <%= @first_username %> </strong> </li> -- <li> <em> <%= @first_track.title %> </em> </li> -- <li> <%= @user_location %> </li>
+					</ul>
+				</div>
 
-</div> 
+			<object height="81" width="100%" id="myPlayer" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000">
+		    <param name="movie" value="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2Fmatas%2Fhobnotropic&auto_play=true&enable_api=true&object_id=myPlayer"></param>
+		    <param name="allowscriptaccess" value="always"></param>
+		    <embed allowscriptaccess="always" height="81" src="http://player.soundcloud.com/player.swf?url=http%3A%2F%2Fsoundcloud.com%2F<%= @name_url %>%2F<%= @track_url %>&enable_api=true&object_id=myPlayer" type="application/x-shockwave-flash" width="100%" name="myPlayer"></embed>
+		  </object>
 
+		</div> 
+	</div>
 </body>
 <%# @users.each do |user| %>
 	<%# if (user.city) and (user.city.length != 0)  %>
