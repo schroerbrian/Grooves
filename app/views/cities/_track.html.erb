@@ -1,4 +1,8 @@
 <div class="track" id="track-<%= track[:track].id %>"> 
+		<a href="http://soundcloud.com/<%= "#{track[:user].permalink}/#{track[:track].permalink}" %>" class="sc-player">
+		My new dub track
+	</a>
+
 	<div class="track_info">	 
 		<ul>		
 			<li><strong><%= track[:track].user.username.titleize %></strong></li> --
@@ -7,7 +11,5 @@
 		</ul>
 	</div>
 
-	<a href="http://soundcloud.com/<%= "#{track[:user].permalink}/#{track[:track].permalink}" %>" class="sc-player">
-		My new dub track
-	</a>
+
 </div> 

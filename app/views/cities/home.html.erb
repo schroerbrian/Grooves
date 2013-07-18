@@ -24,6 +24,8 @@
 						var trackId = "<%= good_track[:track].id %>";
 						onMarkerClick(trackId);
 					})
+					.on("click", function() { map.setView(<%= good_track[:coordinates] %>, 3);
+					})
 				<% if i.zero? %>
 					.openPopup();
 				<% end %>
