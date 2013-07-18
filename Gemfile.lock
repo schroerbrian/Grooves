@@ -116,7 +116,6 @@ GEM
 
 PLATFORMS
   ruby
-  unknown
 
 DEPENDENCIES
   coffee-rails (= 3.2.2)
