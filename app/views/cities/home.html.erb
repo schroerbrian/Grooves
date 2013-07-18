@@ -6,8 +6,25 @@
 	 <div id="map">
 	 	
 	 	<script>
-			var map = L.map('map').setView(<%= @geolocation %>, 2);
-			L.marker(<%= @geolocation %>).addTo(map).bindPopup("<strong> <%= @first_username %> </strong>").openPopup();
+	 		function onMarkerClick(trackId) {
+	 			$(".track").hide();
+	 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
+	 		};
+
+			var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 2);
+
+			<% @good_tracks.each_with_index do |good_track, i| %>
+				L.marker(<%= good_track[:coordinates] %>)
+					.addTo(map)
+					.bindPopup("<strong><%= good_track[:user].username %></strong>")
+					.on("click", function(event) {
+						var trackId = "<%= good_track[:track].id %>";
+						onMarkerClick(trackId);
+					})
+				<% if i.zero? %>
+					.openPopup();
+				<% end %>
+			<% end %>
 
 			L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/997/256/{z}/{x}/{y}.png', {
 			    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
@@ -18,20 +35,17 @@
 
 	 </div>
 
-	 <div class="footer">
-		<div class="track">
-
-				<div class="track_info">	 
-					<ul>		
-						<li><strong> <%= @first_username %> </strong> </li> -- <li> <em> <%= @first_track.title %> </em> </li> -- <li> <%= @user_location %> </li>
-					</ul>
-				</div>
-
-		<a href="http://soundcloud.com/<%= @name_url %>/<%= @track_url %>" class="sc-player">My new dub track</a>
-		</div> 
-	</div>
-<%# @users.each do |user| %>
-	<%# if (user.city) and (user.city.length != 0)  %>
- <%#<li> # link_to user.city.titleize, "/city?user=#{user.id}&city=#{user.city}&username=#{user.username}" %> 
-  <%# end%>
- <%# end %>
+<div class="footer">
+	<%= render :partial => "track", :collection => @good_tracks %>
+	<%# @good_tracks.each do |good_track| %>
+		<%#= render :partial => "track", :locals => { good_track: good_track } %>
+		<%#= render :partial => "track", :object => good_track %>
+		<%#= render :partial => "track", :locals => {
+			id: good_track[:track].id,
+			username: good_track[:track].user.username,
+			track_title: good_track[:track].title,
+			user_location: "#{good_track[:user].city}, #{good_track[:user].country}",
+			track_path: "#{good_track[:user].permalink}/#{good_track[:track].permalink}"
+		} %>
+	<%# end %>
+</div>

@@ -37,6 +37,10 @@ h1 {
 	margin-top: 0px;
 }
 
+.track:not(:first-child) {
+	display: none;
+}
+
 .track .track_info {
 	padding: 0px;
 	margin: 0px;
