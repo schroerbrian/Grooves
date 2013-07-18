@@ -3,7 +3,7 @@
 		<ul>		
 			<li><strong><%= track[:track].user.username %></strong></li> --
 			<li><em><%= track[:track].title %></em></li> --
-			<li><%= "#{track[:user].city}, #{track[:user].country}" %></li>
+			<li><%= "#{track[:user].city.titleize}, #{track[:user].country.titleize}" %></li>
 		</ul>
 	</div>
 

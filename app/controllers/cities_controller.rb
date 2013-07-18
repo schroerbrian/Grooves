@@ -11,7 +11,7 @@ class CitiesController < ApplicationController
 		#here's where i call the soundcloud api
 		client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e")
 
-		tracks = client.get('/tracks', :limit => 2)
+		tracks = client.get('/tracks', :limit => 5)
 		tracks.each do |track|
 			user = client.get('/users/' + track.user_id.to_s)
 

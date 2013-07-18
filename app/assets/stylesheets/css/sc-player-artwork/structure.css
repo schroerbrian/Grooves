@@ -19,23 +19,26 @@
   background-color: #transparent;
   list-style-type: none;
   position: relative;
+  display: none;
 }
 
 .sc-player .sc-artwork-list li{
   list-style-type: none;
   float: left;
   width: 200px;
+  display: none;
 }
 
 .sc-player .sc-artwork-list li.active{
   list-style-type: none;
-  display: block;
+  display: none;
 }
 
 .sc-player .sc-artwork-list li img, .sc-player .sc-artwork-list li div{
   list-style-type: none;
   width: 200px;
   height: 200px;
+  display: none;
 }
 
 /* controls */
@@ -74,7 +77,7 @@
   left: 50px;
   top: 240px;
   height: 40px;
-  width: 950px;
+  width: 95%;
   display: block;
 }
 
@@ -86,7 +89,7 @@
 
 .sc-scrubber .sc-time-span img {
   height: 30px;
-  width: 940px;
+  width: 99%;
 }
 
 .sc-scrubber .sc-buffer, .sc-scrubber .sc-played{
@@ -99,6 +102,7 @@
   position: absolute;
   right: 0;
   top: -30px;
+  display: blank;
 }
 
 /* tracks */
@@ -110,6 +114,7 @@
   float: left;
   width: 100%;
   top: 0;
+  display: none;
 }
 
 .sc-player ol.sc-trackslist li{
@@ -120,6 +125,7 @@
   margin: 0px;
   padding: 150px 5px 5px 5px;
   list-style: none;
+  display: none;
 }
 
 /* Track info*/
@@ -150,6 +156,7 @@
 
 .sc-player .sc-info-toggle.active{
   left: -5000px;
+  display: none;
 }
 
 .sc-player .sc-info-close{

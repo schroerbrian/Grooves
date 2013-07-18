@@ -1,7 +1,9 @@
 
 	 <header>
-	 	<h1>Global Grooves: Locally Sourced Beats</h1>	
-
+	   <nav class="site_name">
+	 		 <h1>Global Grooves</h1>
+	 		 <p>Locally Sourced Beats</p>
+	 	 </nav>
 	 </header>
 	 <div id="map">
 	 	
@@ -11,12 +13,13 @@
 	 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 	 		};
 
-			var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 2);
+			var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 3);
+		
 
 			<% @good_tracks.each_with_index do |good_track, i| %>
 				L.marker(<%= good_track[:coordinates] %>)
 					.addTo(map)
-					.bindPopup("<strong><%= good_track[:user].username %></strong>")
+					.bindPopup("<strong><em><%= good_track[:track].title %></em></strong><br /><%= good_track[:user].city.titleize %>, <%= good_track[:user].country.titleize %> ")
 					.on("click", function(event) {
 						var trackId = "<%= good_track[:track].id %>";
 						onMarkerClick(trackId);
@@ -28,7 +31,8 @@
 
 			L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/997/256/{z}/{x}/{y}.png', {
 			    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-			    maxZoom: 18
+			    maxZoom: 18,
+			    minZoom: 2
 			}).addTo(map);
 
 	 	</script>
