@@ -2,7 +2,7 @@
 	 <header>
 	   <nav class="site_name">
 	 		 <h1>Global Grooves</h1>
-	 		 <p>Locally Sourced Beats</p>
+	 		 <h3>Locally Sourced Beats</h3>
 	 	 </nav>
 	 </header>
 	 <div id="map">
@@ -13,7 +13,7 @@
 	 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 	 		};
 
-			var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 3);
+			var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 2);
 		
 
 			<% @good_tracks.each_with_index do |good_track, i| %>
@@ -41,15 +41,4 @@
 
 <div class="footer">
 	<%= render :partial => "track", :collection => @good_tracks %>
-	<%# @good_tracks.each do |good_track| %>
-		<%#= render :partial => "track", :locals => { good_track: good_track } %>
-		<%#= render :partial => "track", :object => good_track %>
-		<%#= render :partial => "track", :locals => {
-			id: good_track[:track].id,
-			username: good_track[:track].user.username,
-			track_title: good_track[:track].title,
-			user_location: "#{good_track[:user].city}, #{good_track[:user].country}",
-			track_path: "#{good_track[:user].permalink}/#{good_track[:track].permalink}"
-		} %>
-	<%# end %>
 </div>

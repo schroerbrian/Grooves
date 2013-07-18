@@ -1,8 +1,8 @@
 .sc-player{
-  width: 800px;
-  height: 300px;
+  width: 100%;
+  height: 0;
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 0;
 }
 
 .sc-player ol, .sc-player li{
@@ -47,7 +47,7 @@
   position: absolute;
   width: 40px;
   height: 40px;
-  top: 242px;
+  top: 0;
   left: 0;
   
 }
@@ -75,7 +75,7 @@
 .sc-scrubber {
   position: absolute;
   left: 50px;
-  top: 240px;
+  top: 0;
   height: 40px;
   width: 95%;
   display: block;

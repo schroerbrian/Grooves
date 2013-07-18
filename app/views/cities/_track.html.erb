@@ -1,7 +1,7 @@
 <div class="track" id="track-<%= track[:track].id %>"> 
 	<div class="track_info">	 
 		<ul>		
-			<li><strong><%= track[:track].user.username %></strong></li> --
+			<li><strong><%= track[:track].user.username.titleize %></strong></li> --
 			<li><em><%= track[:track].title %></em></li> --
 			<li><%= "#{track[:user].city.titleize}, #{track[:user].country.titleize}" %></li>
 		</ul>
