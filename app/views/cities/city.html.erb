@@ -1,0 +1,38 @@
+
+<%#<%= params %>
+<%= params %>
+
+<h1>
+City: <%= params["city"].upcase %>
+</h1>
+
+<%# Track Title %>	
+<strong>Track Title:</strong> <%= @track[0].title %> <br><br>
+
+<%# Username %>	
+<% username = params["username"] %>
+
+<% if params["username"].include? " " %>
+	<% link_string = params["username"].gsub(" ", "-") %>
+<% end %>
+
+<strong>Username:</strong> <%= link_to username, "http://soundcloud.com/" + link_string.downcase %>
+
+ <br><br>
+
+
+<%# Avatar %>	
+<strong>User Avatar:</strong> <br/>
+<%= image_tag(@user.avatar_url) %> <br><br>
+
+<%# embedded track %>	
+<strong>Embedded Track</strong>
+ <%= @track[0].stream_url %> <br><br>
+
+
+<%# created at %>	
+<strong>Created: </strong> <%= @track[0].created_at %>
+
+<br><br>
+
+<strong>Plays: </strong> <%= @track[0].playback_count %>
