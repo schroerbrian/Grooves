@@ -6,6 +6,7 @@ class Track
 		@good_tracks = []
 	end
 
+	#call api to get tracks
 	def get_tracks
 		tracks = @client.get('/tracks', :limit => 15)
 		tracks.each do |track|

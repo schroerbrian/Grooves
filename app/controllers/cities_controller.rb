@@ -8,7 +8,7 @@ class CitiesController < ApplicationController
   def track
 		# dumb_tracks = []
 		# @old_tracks = []
-	end
+
 		# client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e")
 
 		# dumb_tracks = client.get('/tracks', :created_at => {:from => (2009-07-19).to_s, 
@@ -28,6 +28,6 @@ class CitiesController < ApplicationController
 		# 		@old_tracks << { track: track, user: user, coordinates: [lat, lng] }
 		# 	end
 		# end
-  # end
+  end
 
 end
