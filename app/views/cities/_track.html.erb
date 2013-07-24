@@ -1,16 +1,10 @@
 
 <%# the player %>
-
-
 <div class="track" id="track-<%= track[:track].id %>"> 
 		<a href="http://soundcloud.com/<%= "#{track[:user].permalink}/#{track[:track].permalink}" %>" class="sc-player">
 	  </a>
-		
-	<%# skip button %>	
-	<!-- 	<nav class="skip">
-			<img src= "../skip.png" >
-		</nav> -->
 
+<%# track info %>		
 	<div class="track_info">	 
 		<ul>		
 			<li><%= track[:track].user.username.titleize %></li> <strong>||</strong>

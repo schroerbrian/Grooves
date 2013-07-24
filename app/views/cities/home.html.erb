@@ -24,7 +24,7 @@
 		//calling map and setting view based on first track in the array
 		var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 1);
 
-		// click on marker to popup track info and play track
+		// click on marker: popup track info and play track
 		<% @good_tracks.each_with_index do |good_track, i| %>
 			L.marker(<%= good_track[:coordinates] %>)
 				.addTo(map)
@@ -43,6 +43,19 @@
 		//jquery for pulling random tracks
 		$('.random').click(function() {
 			location.reload();
+		});
+
+		function onMarkerClick(trackId) {
+			$(".track").hide();
+			$("#track-" + trackId).show().find(".sc-trackslist a").click();
+		};
+
+		//jquery for next button; the click function curly brackets call the div class "track"  //
+		
+		$('.next-track').click(function() { 
+			alert("hi");
+			$(".track").hide();
+			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 		});
 
 		//map tile layer and optional parameters
