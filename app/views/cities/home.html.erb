@@ -1,3 +1,4 @@
+
 	 <header>
 	   <nav class="site_name">
 	 		 <h1>Global Grooves Project</h1>
@@ -5,22 +6,21 @@
 	 	 </nav>
 	 </header>
 	 
-	
-	 
 	 <div id="map">
 	 	 <div class="new-tracks">
-	 	   <h5 class="next-track">Next track</h3>
+	 	   <h5 class="next-track">Next track</h5>
 	 	   <h5 class="flashback">Flashback</h5>
  	 	   <a href="#" id="rando"> <h5 class="random">Random</h5> 
  	 	   </a>
 	 	 </div>
-	 	
+ 	
 	 	<script>
 	 		function onMarkerClick(trackId) {
 	 			$(".track").hide();
 	 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 	 		};
 
+	 		//calling map and setting view based on first track in the array
 			var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 2);
 		
 			// click on marker to popup track info and play track
@@ -39,6 +39,7 @@
 				<% end %>
 			<% end %>
 
+			//jquery for clicking and pulling random tracks
 			$('.random').click(function() {
    		location.reload();
 			});
