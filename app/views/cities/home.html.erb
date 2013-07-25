@@ -22,7 +22,7 @@
 		};
 
 		//calling map and setting view based on first track in the array
-		var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 1);
+		var map = L.map('map').setView(<%= @good_tracks.first[:coordinates] %>, 2);
 
 		// click on marker: popup track info and play track
 		<% @good_tracks.each_with_index do |good_track, i| %>

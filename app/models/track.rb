@@ -8,7 +8,7 @@ class Track
 
 	#call api to get tracks
 	def get_tracks
-		tracks = @client.get('/tracks', :limit => 3)
+		tracks = @client.get('/tracks', :limit => 8)
 		tracks.each do |track|
 			user = @client.get('/users/' + track.user_id.to_s)
 				if user.city.present? && user.country.present?

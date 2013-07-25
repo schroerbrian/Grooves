@@ -45,8 +45,8 @@
 
 .sc-player .sc-controls{
   position: absolute;
-  width: 40px;
-  height: 70px;
+  width: 50px;
+  height: 25px;
   top: 0;
   left: 0;
   
@@ -54,11 +54,11 @@
 
 .sc-player .sc-controls a{
   display: block;
-  width: 70px;
-  height: 75px;
+  width: 50px;
+  height: 25px;
   background-color: black;
-  background-position: -11px 4px;
-  background-size: 70px 70px;
+  background-position: -15px -20px;
+  background-size: 80px 70px;
   background-repeat: no-repeat;
 }
 .sc-player .sc-controls a:hover {
@@ -80,16 +80,17 @@
 
 .sc-scrubber {
   position: absolute;
-  left: 50px;
+  left: 28%;
   top: 0;
-  height: 70px;
-  width: 95%;
+  height: 0px;
+  width: 44%;
   display: block;
 }
 
 .sc-scrubber .sc-time-span{
-  height: 52.5px;
-  margin: 5px;
+  height: 2px;
+  margin: 0px 0px;
+  top: 20px;
   position: relative;
 }
 
@@ -99,7 +100,7 @@
 }
 
 .sc-scrubber .sc-buffer, .sc-scrubber .sc-played{
-  height: 52.5px;
+  height: 2px;
   position: absolute;
   top: 0;
 }
@@ -107,7 +108,7 @@
 .sc-scrubber .sc-time-indicators{
   position: absolute;
   right: 0;
-  top: -30px;
+  top: 0px;
   display: blank;
 }
 

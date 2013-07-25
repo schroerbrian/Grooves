@@ -6,6 +6,7 @@ html, body, #map {
 body {
 	background: white;
 	margin: 0;
+  font-family: 'helvetica', sans serif;
 }
 
 header {
@@ -122,8 +123,8 @@ header .site_name h1 {
 }
 
 .footer {
-	height: 10%;
-	background: #bdc3c7;
+	height: 2%;
+	background: #2c3e50;
   padding: 35px 2%;
   text-align: center;
   position: fixed;
@@ -155,9 +156,7 @@ header .site_name h1 {
 	margin-right: 0px;
 } 
 
-#soundcloud_widget{
-	display: none;
-}
+
 /*.track .skip {
 	position: relative;
 	left: 900px;
