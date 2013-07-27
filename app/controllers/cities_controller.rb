@@ -3,6 +3,7 @@ class CitiesController < ApplicationController
   def home
 		t = Track.new 
 		@good_tracks = t.get_tracks
+		binding.pry
 	end
   
   def track
