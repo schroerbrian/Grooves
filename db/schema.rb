@@ -11,13 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712234402) do
+ActiveRecord::Schema.define(:version => 20130727221107) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
     t.text     "image"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "track_data", :force => true do |t|
+    t.integer  "track_id"
+    t.string   "track_name"
+    t.text     "track_permalink"
+    t.integer  "user_id"
+    t.string   "username"
+    t.string   "user_city"
+    t.string   "user_country"
+    t.integer  "user_coordinates"
+    t.text     "user_permalink"
+    t.text     "user_avatar_url"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
 end

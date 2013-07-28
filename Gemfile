@@ -30,4 +30,5 @@ gem 'json'
 gem 'httparty'
 gem 'soundcloud'
 gem 'geocoder'
+gem 'annotate'
 

@@ -3,7 +3,6 @@ class CitiesController < ApplicationController
   def home
 		t = Track.new 
 		@good_tracks = t.get_tracks
-		binding.pry
 	end
   
   def track
@@ -29,6 +28,10 @@ class CitiesController < ApplicationController
 		# 		@old_tracks << { track: track, user: user, coordinates: [lat, lng] }
 		# 	end
 		# end
+  end
+
+  def test
+  	@track_data = TrackData.all
   end
 
 end
