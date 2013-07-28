@@ -2,21 +2,37 @@
 <br>
 INSPECT
 <br>
-<%= @track_data[0].inspect %>
+<% @track_data %>
 <br>
 OBJECT
 <br>
-<% dicks = @track_data[0] %>
+<% tables = @track_data[0] %>
+
+<br>
+<br>
+<%= @track_data.inspect %>
+<br>
+<br>
+<br>
+<%= tables.user_permalink %>
+
+<br>
+<br>
+
+<%= tables.track_permalink %>
+
+<br>
+<br>
+<br>
 
 
-<br>
-<br>
-<br>
+"http://soundcloud.com/<%= "#{tables.user_permalink}/#{tables.track_permalink}" %>"
 
 
 <%# the player %>
 
-	<a href="<%= "#{dicks.user_permalink}/#{dicks.track_permalink}" %>" class="sc-player">
+	<a href="http://soundcloud.com/<%= "#{tables.user_permalink}/#{tables.track_permalink}" %>" 
+	class="sc-player">
   </a>
 
 
