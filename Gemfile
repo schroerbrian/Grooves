@@ -31,4 +31,5 @@ gem 'httparty'
 gem 'soundcloud'
 gem 'geocoder'
 gem 'annotate'
+gem 'awesome_print'
 

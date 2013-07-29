@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130727221107) do
+ActiveRecord::Schema.define(:version => 20130728211110) do
 
   create_table "cities", :force => true do |t|
     t.string   "name"
@@ -28,11 +28,12 @@ ActiveRecord::Schema.define(:version => 20130727221107) do
     t.string   "username"
     t.string   "user_city"
     t.string   "user_country"
-    t.integer  "user_coordinates"
     t.text     "user_permalink"
     t.text     "user_avatar_url"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.float    "lat"
+    t.float    "lng"
   end
 
 end

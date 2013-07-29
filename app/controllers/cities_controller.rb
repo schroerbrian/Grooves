@@ -31,27 +31,27 @@ class CitiesController < ApplicationController
   end
 
   def test
-  	#our table instance
-  	
-  	#the tracks we call from the model
+		  	
+  	#instantiating a tracks object and calling the API get/filter method on it.
   	t = Track.new 
   	@filtered_tracks = t.get_tracks
-  	test_track_info = @filtered_tracks[0][:track]
-  	test_user_info = @filtered_tracks[0][:user]
-  	test_coordinates = @filtered_tracks[0][:coordinates]
   	
-  	#putting our @filtered_tracks into the table 
-
-  	@table_test_track = TrackData.create(:track_id => test_track_info.id, 
-  		:track_name => test_track_info.title, :track_permalink => test_track_info.permalink,
-   		:user_id => test_user_info.id, :username => test_user_info.username, 
-   		:user_city => test_user_info.city, :user_country => test_user_info.country, 
-   		:user_coordinates => test_coordinates[0][:coordinates], :user_permalink => test_user_info.permalink, 
-			:user_avatar_url => test_user_info.avatar_url)
-
+  	#putting filtered tracks into my ActiveRecord Table, track_data  	
+  	@filtered_tracks.each do |filtered_track|
+  		if filtered_track[:coordinates].first.nil?
+  			@filtered_tracks.delete(filtered_track)
+  		else 
+  			TrackData.create(:track_id => filtered_track[:track].id, 
+	  		:track_name => filtered_track[:track].title, :track_permalink => filtered_track[:track].permalink,
+	   		:user_id => filtered_track[:user].id, :username => filtered_track[:user].username, 
+	   		:user_city => filtered_track[:user].city, :user_country => filtered_track[:user].country, 
+	   		:user_permalink => filtered_track[:user].permalink, :user_avatar_url => filtered_track[:user].avatar_url,
+	   		:lat => filtered_track[:coordinates].first, :lng => filtered_track[:coordinates].last)
+  		end
+  	end
+  	
   	@track_data = TrackData.all
-
-
+  
   end
 
 end
