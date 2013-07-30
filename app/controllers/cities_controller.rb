@@ -33,25 +33,32 @@ class CitiesController < ApplicationController
   def test
 		  	
   	#instantiating a tracks object and calling the API get/filter method on it.
-  	t = Track.new 
-  	@filtered_tracks = t.get_tracks
+  	# t = Track.new 
+  	# @filtered_tracks = t.get_tracks
   	
-  	#putting filtered tracks into my ActiveRecord Table, track_data  	
-  	@filtered_tracks.each do |filtered_track|
-  		if filtered_track[:coordinates].first.nil?
-  			@filtered_tracks.delete(filtered_track)
-  		else 
-  			TrackData.create(:track_id => filtered_track[:track].id, 
-	  		:track_name => filtered_track[:track].title, :track_permalink => filtered_track[:track].permalink,
-	   		:user_id => filtered_track[:user].id, :username => filtered_track[:user].username, 
-	   		:user_city => filtered_track[:user].city, :user_country => filtered_track[:user].country, 
-	   		:user_permalink => filtered_track[:user].permalink, :user_avatar_url => filtered_track[:user].avatar_url,
-	   		:lat => filtered_track[:coordinates].first, :lng => filtered_track[:coordinates].last)
-  		end
-  	end
+  	# #putting filtered tracks into my ActiveRecord Table, track_data  	
+  	# @filtered_tracks.each do |filtered_track|
+  	# 	if filtered_track[:coordinates].first.nil?
+  	# 		@filtered_tracks.delete(filtered_track)
+  	# 	else 
+  	# 		TrackData.create(:track_id => filtered_track[:track].id, 
+	  # 		:track_name => filtered_track[:track].title, :track_permalink => filtered_track[:track].permalink,
+	  #  		:user_id => filtered_track[:user].id, :username => filtered_track[:user].username, 
+	  #  		:user_city => filtered_track[:user].city, :user_country => filtered_track[:user].country, 
+	  #  		:user_permalink => filtered_track[:user].permalink, :user_avatar_url => filtered_track[:user].avatar_url,
+	  #  		:lat => filtered_track[:coordinates].first, :lng => filtered_track[:coordinates].last)
+  	# 	end
+  	# end
   	
   	@track_data = TrackData.all
-  
+  	@last_tracky = TrackData.last
+  	@last_tracks = TrackData.last(10)
+
+  end
+
+  def get_tracks
+  	last_tracks = TrackData.last(10)
+  	render :json => last_tracks
   end
 
 end
