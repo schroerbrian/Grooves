@@ -31,11 +31,9 @@ class CitiesController < ApplicationController
   end
 
   def test
-		  	
-  	@track_data = TrackData.all
+		@track_data = TrackData.all
   	@last_tracky = TrackData.last
   	@last_tracks = TrackData.last(10)
-  	
   end
 
   def get_tracks
