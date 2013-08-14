@@ -16,24 +16,27 @@
 	</div>
 
 	<script>
+
+		var currentTracks = []
+		var x 
 		function onMarkerClick(trackId) {
 			$(".track").hide();
 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 		};
 
-		//calling map and setting view based on first track in the array
-		
+		var map = L.map('map').setView([22, 122], 3);
+
 		$.ajax(
 			'/get_tracks',
 			{ success: function(last_tracks){
-				console.log(last_tracks);
-				var map = L.map('map').setView([22, 122], 2);
+				
 
 				//click on marker: popup track info and play track
 				_.each(last_tracks, function(last_track) {
 					var coords = [];
 					coords.push(last_track.lat)
 					coords.push(last_track.lng)
+
 					L.marker(coords)
 						.addTo(map)
 						.bindPopup("<div class='top'>" + 
@@ -49,38 +52,28 @@
 							+	last_track.user_city + ", " + last_track.user_country) 
 						.on("click", function(event) {var trackId = last_track.track_id;
 						onMarkerClick(trackId);
+
 						})
 						.on("click", function() { map.setView(coords, 3);
 						})
+						console.log(last_track.user_permalink)
+						var currentTrack = document.getElementsByClassName("sc-player").innerHTML;
+							// _.template(currentTrack, last_track.user_permalink)
 					//  if i.zero? 
 					// 	.openPopup();
 					//  end
 				});
-				// end of each
-
 
 				L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/998/256/{z}/{x}/{y}.png', {
 				    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 				    maxZoom: 18,
-				    minZoom: 1,
+				    minZoom: 2,
+				    maxbounds: ([63, -170.227], [-63, 173]), 
 				}).addTo(map);
 			}
 		});
-
-		// var map = L.map('map').setView([22, 122], 2);
-
-		// L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/998/256/{z}/{x}/{y}.png', {
-		//     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
-		//     maxZoom: 18,
-		//     minZoom: 1,
-		//     maxBounds: [[-85, -180], [85, 180]]
-		// }).addTo(map);
-
-
-
-
-
-		//jquery for pulling random tracks
+  	
+  	//jquery for pulling random tracks
 		$('.random').click(function() {
 			location.reload();
 		});
@@ -91,40 +84,25 @@
 		};
 
 		//jquery for next button; the click function curly brackets call the div class "track"  //
-		
 		$('.next-track').click(function() { 
-			alert("hi");
 			$(".track").hide();
 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 		});
-
-		//map tile layer and optional parameters
 
 
 	</script>
 
 </div>
+
 <div class="footer">
 
-<!-- <div class="track" id="track-">  -->
-<%= render :partial => "testtrack" %>
-
-<!-- 	  <a href="http://soundcloud.com/matas/hobnotropic" class="sc-player">My new dub track</a>
-</div> -->
-
-</div>
-<!-- 
-<div class='track' id='track-last_track.id'> 
-		<a href='http://soundcloud.com/" + last_track.user_permalink + last_track.track_permalink "'> class='sc-player'>
-	  </a>
-</div>  
+	<!-- 	  <a href="http://soundcloud.com/matas/hobnotropic" class="sc-player">My new dub track</a>
+	</div> -->
+<!-- 		<a href="http://soundcloud.com/" onclick="location.href=this.href+currentTrack;return false;" class="sc-player">
+		</a>
  -->
-
-<%# the player %>
-<!-- 	// <a href="http://soundcloud.com/" + last_track.user_permalink + "/" + last_track.track_permalink >
-							
-	// class="sc-player">
- //  </a> -->
+<%#= render :partial => "testtrack" %>
+</div>
 
 
 
