@@ -1,4 +1,3 @@
-
 <header>
 	<nav class="site_name">
 		<h1>Global Grooves Project</h1>
@@ -7,19 +6,18 @@
 </header>
 
 <div id="map">
-	<div class="new-tracks">
+	<nav class="new-tracks">
 		<h5 class="next-track">Next track</h5>
 	  <h5 class="flashback">Flashback</h5>
  	  <a href="#" id="rando"> 
  	  	<h5 class="random">Random</h5> 
  	  </a>
-	</div>
+	</nav>
 
 	<script>
-
 		var currentTracks = []
-		var x 
-		function onMarkerClick(trackId) {
+		var x = undefined 
+ 		function onMarkerClick(trackId) {
 			$(".track").hide();
 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 		};
@@ -29,8 +27,6 @@
 		$.ajax(
 			'/get_tracks',
 			{ success: function(last_tracks){
-				
-
 				//click on marker: popup track info and play track
 				_.each(last_tracks, function(last_track) {
 					var coords = [];
