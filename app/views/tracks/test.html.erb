@@ -15,19 +15,24 @@
 	</nav>
 
 	<script>
+		//test variables to try to plug into widget 
 		var currentTracks = []
 		var x = undefined 
+ 		
  		function onMarkerClick(trackId) {
 			$(".track").hide();
 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
 		};
 
+		//calling map and setting view to a static location
 		var map = L.map('map').setView([22, 122], 3);
 
+		//calling tracks from the database and then displaying on map
 		$.ajax(
 			'/get_database_tracks',
 			{ success: function(last_tracks){
-				//click on marker: popup track info and play track
+				
+				//iterate through called tracks and bind to map marker: popup track info and play track upon click
 				_.each(last_tracks, function(last_track) {
 					var coords = [];
 					coords.push(last_track.lat)
@@ -48,16 +53,15 @@
 							+	last_track.user_city + ", " + last_track.user_country) 
 						.on("click", function(event) {var trackId = last_track.track_id;
 						onMarkerClick(trackId);
-
 						})
 						.on("click", function() { map.setView(coords, 3);
 						})
 						console.log(last_track.user_permalink)
 						var currentTrack = document.getElementsByClassName("sc-player").innerHTML;
 							// _.template(currentTrack, last_track.user_permalink)
-					//  if i.zero? 
-					// 	.openPopup();
-					//  end
+					 // if i.zero? 
+						// .openPopup();
+					 // end
 				});
 
 				L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/998/256/{z}/{x}/{y}.png', {
