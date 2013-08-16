@@ -1,5 +1,5 @@
 class Track
-	attr_accessor :get_tracks, :insert_tracks_into_track_data_table, :filtered_tracks
+	attr_accessor :get_database_tracks, :insert_tracks_into_track_data_table, :filtered_tracks
 	
 	def initialize
 		@client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e")
