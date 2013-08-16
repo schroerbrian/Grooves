@@ -6,7 +6,7 @@ class Track
 		@filtered_tracks = []
 	end
 
-	#call api to get tracks
+	#call api to get tracks; used for my home page
 	def get_tracks
 		tracks = @client.get('/tracks', :limit => 6)
 		tracks.each do |track|
@@ -24,6 +24,7 @@ class Track
 		@filtered_tracks
 	end
 
+	#this will be a rake task
 	def insert_tracks_into_track_data_table
   	@filtered_tracks.each do |filtered_track|
   		if filtered_track[:coordinates].first.nil?
