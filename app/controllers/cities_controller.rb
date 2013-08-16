@@ -4,7 +4,18 @@ class CitiesController < ApplicationController
 		t = Track.new 
 		@filtered_tracks = t.get_tracks
 	end
-  
+
+  def test
+		@track_data = TrackData.all
+  	@last_tracky = TrackData.last
+  	@last_tracks = TrackData.last(10)
+  end
+
+  def get_tracks
+  	last_tracks = TrackData.last(10)
+  	render :json => last_tracks
+  end
+
   def track
 		# dumb_tracks = []
 		# @old_tracks = []
@@ -28,17 +39,6 @@ class CitiesController < ApplicationController
 		# 		@old_tracks << { track: track, user: user, coordinates: [lat, lng] }
 		# 	end
 		# end
-  end
-
-  def test
-		@track_data = TrackData.all
-  	@last_tracky = TrackData.last
-  	@last_tracks = TrackData.last(10)
-  end
-
-  def get_tracks
-  	last_tracks = TrackData.last(10)
-  	render :json => last_tracks
   end
 
 end
