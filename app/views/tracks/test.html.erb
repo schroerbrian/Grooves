@@ -15,6 +15,10 @@
 	</nav>
 
 	<script>
+		_.templateSettings = {
+		  interpolate : /\{\{(.+?)\}\}/g
+		};
+
 		//test variables to try to plug into widget 
 		var currentTracks = []
 		var x = undefined 
@@ -25,7 +29,7 @@
 		};
 
 		//calling map and setting view to a static location
-		var map = L.map('map').setView([22, 122], 3);
+		var map = L.map('map', { center: [22, 122], maxBounds: [[90, -180], [-90, 180]] }).setView([10, 0.1], 1);
 
 		//calling tracks from the database and then displaying on map
 		$.ajax(
@@ -58,18 +62,37 @@
 						})
 						console.log(last_track.user_permalink)
 						var currentTrack = document.getElementsByClassName("sc-player").innerHTML;
-							// _.template(currentTrack, last_track.user_permalink)
 					 // if i.zero? 
 						// .openPopup();
 					 // end
+
+					 	var template = '<div class="track" id="track-{{track_id }}">' +
+						 	'<a href="http://soundcloud.com/{{user_permalink}}/{{track_permalink}} " class="sc-player"></a>' +
+						 	'<div class="track_info">' +
+						 		'<ul>' +
+						 			'<li>{{username}}</li> <strong>||</strong>' +
+						 			'<li><em>{{track_name}} </em></li> <strong>||</strong>' +
+						 			'<li> {{user_city}}, {{user_country}}</li>' +
+						 		'</ul>' +
+					 		'</div>' +
+					  '</div>';
+
+					 var footer = document.getElementsByClassName("footer")[0]
+					 var current_track = _.template(template, last_track)
+					 footer.innerHTML+= current_track
+
 				});
 
 				L.tileLayer('http://{s}.tile.cloudmade.com/f644205df10c4e16a94c5c9b74438873/998/256/{z}/{x}/{y}.png', {
 				    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
 				    maxZoom: 18,
-				    minZoom: 2,
-				    maxbounds: ([63, -170.227], [-63, 173]), 
+				    minZoom: 1   
 				}).addTo(map);
+
+				var scPlayerScript = document.createElement("script");
+				scPlayerScript.setAttribute("src", "/sc-player.js");
+				var body = document.getElementsByTagName("body")[0];
+				body.appendChild(scPlayerScript);
 			}
 		});
   	
@@ -94,7 +117,6 @@
 </div>
 
 <div class="footer">
-	<a href="http://soundcloud.com/matas/hobnotropic" class="sc-player">My new dub track</a>
 </div>
 
 

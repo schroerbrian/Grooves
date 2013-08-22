@@ -2,12 +2,12 @@ class Track
 	attr_accessor :get_database_tracks, :insert_tracks_into_track_data_table, :filtered_tracks
 	
 	def initialize
-		@client = Soundcloud.new(:client_id => "e9e8fbf8ac2f57eb0f54519af9c2f22e")
+		@client = Soundcloud.new(:client_id => "#{ENV['SOUNDCLOUD_KEY']}")
 		@filtered_tracks = []
 	end
 
 	#call api to get tracks; used for my home page
-	def get_tracks
+	def get_tracks_from_soundcloud
 		tracks = @client.get('/tracks', :limit => 6)
 		tracks.each do |track|
 			user = @client.get('/users/' + track.user_id.to_s)

@@ -2,7 +2,7 @@ class TracksController < ApplicationController
 
   def home
 		t = Track.new 
-		@filtered_tracks = t.get_tracks
+		@filtered_tracks = t.get_tracks_from_soundcloud
 	end
 
   def test
