@@ -46,6 +46,7 @@ namespace :trackdata do
 			   		:lat => downloaded_track[:coordinates].first, 
 			   		:lng => downloaded_track[:coordinates].last
 			   		)
+					
 				end 
 			end 
 		end 

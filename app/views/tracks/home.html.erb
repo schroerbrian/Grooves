@@ -39,11 +39,6 @@
 			<% end %>
 		<% end %>
 
-		//jquery for pulling random tracks
-		$('.random').click(function() {
-			location.reload();
-		});
-
 		function onMarkerClick(trackId) {
 			$(".track").hide();
 			$("#track-" + trackId).show().find(".sc-trackslist a").click();
